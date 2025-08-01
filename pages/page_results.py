@@ -176,75 +176,74 @@ elif selection_box_results == "Customized":
         col_c1, col_c2, col_c3 = st.columns([1, 1, 1])
             
         with col_c1:
-            st.markdown("#### Body")
+            st.markdown("#### Body") 
+            with st.container(height=600, border=False) :
             
-            # Get current body count for expander title
-            body_count = len(st.session_state.selected_body_results)
-            
-            with st.expander(f"🔵 Body Results ({body_count}/15)", expanded=body_count >= 2):
-                # Process each body option
-                for option in options[:15]:
-                    checkbox_key = create_clean_key("body", option)
-                    
-                    # Check if this option is currently selected
-                    is_currently_selected = option in st.session_state.selected_body_results
-                    
-                    # Create checkbox with current state and callback
-                    st.checkbox(
-                        option, 
-                        value=is_currently_selected, 
-                        key=checkbox_key,
-                        on_change=update_body_results,
-                        height=500
-                    )
+                # Get current body count for expander title
+                body_count = len(st.session_state.selected_body_results)
+                with st.expander(f"🔵 Body Results ({body_count}/15)", expanded=body_count >= 2):
+                    # Process each body option
+                    for option in options[:15]:
+                        checkbox_key = create_clean_key("body", option)
+                        
+                        # Check if this option is currently selected
+                        is_currently_selected = option in st.session_state.selected_body_results
+                        
+                        # Create checkbox with current state and callback
+                        st.checkbox(
+                            option, 
+                            value=is_currently_selected, 
+                            key=checkbox_key,
+                            on_change=update_body_results,
+                        )
             
         with col_c2:
             st.markdown("#### Rod")
-            
-            # Get current rod count for expander title
-            rod_count = len(st.session_state.selected_rod_results)
-            rod_total = len(options[15:])
-            
-            with st.expander(f"🟢 Rod Results ({rod_count}/{rod_total})", expanded=rod_count >= 2):
-                # Process each rod option
-                for option in options[15:]:
-                    checkbox_key = create_clean_key("rod", option)
-                    
-                    # Check if this option is currently selected
-                    is_currently_selected = option in st.session_state.selected_rod_results
-                    
-                    # Create checkbox with current state and callback
-                    st.checkbox(
-                        option, 
-                        value=is_currently_selected, 
-                        key=checkbox_key,
-                        on_change=update_rod_results,
-                        height=500
-                    )
+            with st.container(height=600, border=False):
+                
+                # Get current rod count for expander title
+                rod_count = len(st.session_state.selected_rod_results)
+                rod_total = len(options[15:])
+                
+                with st.expander(f"🟢 Rod Results ({rod_count}/{rod_total})", expanded=rod_count >= 2):
+                    # Process each rod option
+                    for option in options[15:]:
+                        checkbox_key = create_clean_key("rod", option)
+                        
+                        # Check if this option is currently selected
+                        is_currently_selected = option in st.session_state.selected_rod_results
+                        
+                        # Create checkbox with current state and callback
+                        st.checkbox(
+                            option, 
+                            value=is_currently_selected, 
+                            key=checkbox_key,
+                            on_change=update_rod_results,
+                        )
             
         with col_c3:
             st.markdown("#### Payload")
-            
-            # Get current payload count for expander title
-            payload_count = len(st.session_state.selected_payload_results)
-            payload_total = len(options_payload)
-            
-            with st.expander(f"🟡 Payload Results ({payload_count}/{payload_total})", expanded=payload_count >= 2):
-                # Process each payload option
-                for option in options_payload:
-                    checkbox_key = create_clean_key("payload", option)
-                    
-                    # Check if this option is currently selected
-                    is_currently_selected = option in st.session_state.selected_payload_results
-                    
-                    # Create checkbox with current state and callback
-                    st.checkbox(
-                        option, 
-                        value=is_currently_selected, 
-                        key=checkbox_key,
-                        on_change=update_payload_results,
-                        height=500
-                    )
+            with st.container(height=600, border=False):
+                
+                # Get current payload count for expander title
+                payload_count = len(st.session_state.selected_payload_results)
+                payload_total = len(options_payload)
+                
+                with st.expander(f"🟡 Payload Results ({payload_count}/{payload_total})", expanded=payload_count >= 2):
+                    # Process each payload option
+                    for option in options_payload:
+                        checkbox_key = create_clean_key("payload", option)
+                        
+                        # Check if this option is currently selected
+                        is_currently_selected = option in st.session_state.selected_payload_results
+                        
+                        # Create checkbox with current state and callback
+                        st.checkbox(
+                            option, 
+                            value=is_currently_selected, 
+                            key=checkbox_key,
+                            on_change=update_payload_results,
+                        )
 
         
         # Display summary of selections
