@@ -85,6 +85,14 @@
         "documentation": {}
     },
     {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "validate_unit_selection",
         "kind": 2,
         "importPath": "pages.page_export",
@@ -269,7 +277,7 @@
         "kind": 2,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "def load_unit_data():\n    \"\"\"Load and process unit data from Excel file\"\"\"\n    try:\n        df = pd.read_excel('./materials/Safelink_units.xlsx', header=0)\n        df.sort_values(by=\"Unit Type\", inplace=True)\n        df.reset_index(drop=True, inplace=True)\n        return df\n    except Exception as e:\n        st.error(f\"Error loading unit data: {e}\")\n        return pd.DataFrame()",
+        "peekOfCode": "def load_unit_data():\n    \"\"\"Load and process unit data from Excel file\"\"\"\n    try:\n        df = pd.read_excel( os.path.join('materials', 'Safelink_units.xlsx'), header=0)\n        df.sort_values(by=\"Unit Type\", inplace=True)\n        df.reset_index(drop=True, inplace=True)\n        return df\n    except Exception as e:\n        st.error(f\"Error loading unit data: {e}\")\n        return pd.DataFrame()",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -413,7 +421,70 @@
         "kind": 5,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "safelink_units = load_unit_data()\nif not safelink_units.empty:\n    # Categorize units based on actual data\n    iahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]\n    poseidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]\n    other_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]\n    # Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT \"None\" options\n    IAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\n    PHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\n    shock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]",
+        "peekOfCode": "safelink_units = load_unit_data()\n# Categorize units based on actual data\niahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]\nposeidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]\nother_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]\n# Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT \"None\" options\nIAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\nPHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "iahc_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "iahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]\nposeidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]\nother_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]\n# Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT \"None\" options\nIAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\nPHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "poseidon_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "poseidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]\nother_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]\n# Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT \"None\" options\nIAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\nPHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "other_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "other_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]\n# Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT \"None\" options\nIAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\nPHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {\n        'stroke': f\"{row['stroke [m]']} m\",",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "IAHC_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "IAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]\nPHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {\n        'stroke': f\"{row['stroke [m]']} m\",\n        'overall_size': row['overall size [L/W/H, m]'],\n        'design_pressure': f\"{row['design pressure [bar]']} bar\",",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "PHC_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "PHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]\nshock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {\n        'stroke': f\"{row['stroke [m]']} m\",\n        'overall_size': row['overall size [L/W/H, m]'],\n        'design_pressure': f\"{row['design pressure [bar]']} bar\",\n        'design_water_depth': f\"{row['design water depth [m]']} m\",",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "shock_absorber_units",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "shock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]\n# Create a lookup dictionary for unit specifications\nunit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {\n        'stroke': f\"{row['stroke [m]']} m\",\n        'overall_size': row['overall size [L/W/H, m]'],\n        'design_pressure': f\"{row['design pressure [bar]']} bar\",\n        'design_water_depth': f\"{row['design water depth [m]']} m\",\n        'gas_volume': f\"{row['gas volume [m3 @ atm]']} m³\",",
+        "detail": "pages.page_unit",
+        "documentation": {}
+    },
+    {
+        "label": "unit_specs_lookup",
+        "kind": 5,
+        "importPath": "pages.page_unit",
+        "description": "pages.page_unit",
+        "peekOfCode": "unit_specs_lookup = {}\nfor _, row in safelink_units.iterrows():\n    unit_specs_lookup[row['Unit ID']] = {\n        'stroke': f\"{row['stroke [m]']} m\",\n        'overall_size': row['overall size [L/W/H, m]'],\n        'design_pressure': f\"{row['design pressure [bar]']} bar\",\n        'design_water_depth': f\"{row['design water depth [m]']} m\",\n        'gas_volume': f\"{row['gas volume [m3 @ atm]']} m³\",\n        'weight': f\"{row['weight [kg]']/1000:.1f} tonnes\",  # Convert kg to tonnes\n        'SWL': f\"{row['SWL [Te]']:.1f} Te\", ",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -539,7 +610,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def show_login_screen():\n    \"\"\"Display the login screen\"\"\"\n    # Safelink logo\n    try:\n        image = Image.open(os.path.join('figures', 'SafelinkTabWiFi.png'))\n        _, col2,_ = st.columns([1, 1, 1])\n        with col2:\n            st.image(image, width=800)\n    except:\n        st.title(\"🔧 Safelink OrcaFlex Configuration Tool\")",
+        "peekOfCode": "def show_login_screen():\n    \"\"\"Display the login screen\"\"\"\n    # Safelink logo\n    try:\n        image = Image.open(os.path.join('figures', 'Safelink Logo Medium.png'))\n        _, col2,_ = st.columns([1, 1, 1])\n        with col2:\n            st.image(image, width=800)\n    except:\n        st.title(\"🔧 Safelink OrcaFlex Configuration Tool\")",
         "detail": "main",
         "documentation": {}
     },

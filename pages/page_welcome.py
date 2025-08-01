@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from datetime import date
 import os
 
 #%% set up the page configuration
@@ -116,7 +117,8 @@ if st.session_state.logged_in:
     with col32:
         st.markdown("##### Safelink products and solutions: https://safelink.no/")
         st.markdown("Version: 0.1.0")
-        st.markdown("Release date: 2025-07-01")
+        st.markdown("Release date: 2025-08-01")
+        st.markdown(f"Today is: {date.today().strftime('%Y-%m-%d')}")
         st.markdown("General questions and technical sales: post@safelink.no.")
         st.markdown("Technical support of OrcaFlex simulation: autodept@safelink.no.")
     st.divider()
