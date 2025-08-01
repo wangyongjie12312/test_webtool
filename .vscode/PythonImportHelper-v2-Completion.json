@@ -322,7 +322,7 @@
         "kind": 2,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "def format_unit_display(unit):\n    if isinstance(unit, tuple) and len(unit) == 2:\n        unit_type, unit_id = unit\n        return f\"{unit_type:<30} │ {unit_id}\"\n    else:\n        return str(unit)\ndef get_unit_specifications(unit_data):\n    \"\"\"Get specifications for the selected unit from Excel data\"\"\"\n    if not unit_data or not isinstance(unit_data, tuple):\n        return None",
+        "peekOfCode": "def format_unit_display(unit):\n    unit_type, unit_id = unit\n    return f\"{unit_type:<30} | {unit_id}\"\ndef get_unit_specifications(unit_data):\n    \"\"\"Get specifications for the selected unit from Excel data\"\"\"\n    if not unit_data or not isinstance(unit_data, tuple):\n        return None\n    unit_type_name, unit_id = unit_data\n    # Look up specifications from the loaded Excel data\n    return unit_specs_lookup[unit_id]",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -511,7 +511,7 @@
         "kind": 5,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "current_type = get_unit_type(st.session_state['selected_unit'])\ncategory_index = [\"IAHC\", \"PHC\", \"Shock absorber\"].index(current_type)\n# Unit formatter function\ndef format_unit_display(unit):\n    if isinstance(unit, tuple) and len(unit) == 2:\n        unit_type, unit_id = unit\n        return f\"{unit_type:<30} │ {unit_id}\"\n    else:\n        return str(unit)\ndef get_unit_specifications(unit_data):",
+        "peekOfCode": "current_type = get_unit_type(st.session_state['selected_unit'])\ncategory_index = [\"IAHC\", \"PHC\", \"Shock absorber\"].index(current_type)\n# Unit formatter function\ndef format_unit_display(unit):\n    unit_type, unit_id = unit\n    return f\"{unit_type:<30} | {unit_id}\"\ndef get_unit_specifications(unit_data):\n    \"\"\"Get specifications for the selected unit from Excel data\"\"\"\n    if not unit_data or not isinstance(unit_data, tuple):\n        return None",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -520,7 +520,7 @@
         "kind": 5,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "category_index = [\"IAHC\", \"PHC\", \"Shock absorber\"].index(current_type)\n# Unit formatter function\ndef format_unit_display(unit):\n    if isinstance(unit, tuple) and len(unit) == 2:\n        unit_type, unit_id = unit\n        return f\"{unit_type:<30} │ {unit_id}\"\n    else:\n        return str(unit)\ndef get_unit_specifications(unit_data):\n    \"\"\"Get specifications for the selected unit from Excel data\"\"\"",
+        "peekOfCode": "category_index = [\"IAHC\", \"PHC\", \"Shock absorber\"].index(current_type)\n# Unit formatter function\ndef format_unit_display(unit):\n    unit_type, unit_id = unit\n    return f\"{unit_type:<30} | {unit_id}\"\ndef get_unit_specifications(unit_data):\n    \"\"\"Get specifications for the selected unit from Excel data\"\"\"\n    if not unit_data or not isinstance(unit_data, tuple):\n        return None\n    unit_type_name, unit_id = unit_data",
         "detail": "pages.page_unit",
         "documentation": {}
     },
