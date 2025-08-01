@@ -86,10 +86,9 @@
     },
     {
         "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
+        "isExtraImport": true,
         "detail": "datetime",
         "documentation": {}
     },
