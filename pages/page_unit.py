@@ -19,7 +19,7 @@ st.divider()
 def load_unit_data():
     """Load and process unit data from Excel file"""
     try:
-        df = pd.read_excel('./materials/Safelink_units.xlsx', header=0)
+        df = pd.read_excel( os.path.join('materials', 'Safelink_units.xlsx'), header=0)
         df.sort_values(by="Unit Type", inplace=True)
         df.reset_index(drop=True, inplace=True)
         return df
