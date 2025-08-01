@@ -55,26 +55,6 @@ def handle_logout():
     st.session_state.show_login_dialog = True
     st.rerun()
 
-# Auto-logout function
-# def check_session_timeout(timeout_minutes=1):
-#     """Check if session has timed out (30 minutes of inactivity)"""
-#     if st.session_state.logged_in:
-#         current_time = datetime.now()
-#         last_activity = st.session_state.get('last_activity', current_time)
-        
-#         # Convert to datetime if it's stored as timestamp
-#         if isinstance(last_activity, (int, float)):
-#             last_activity = datetime.fromtimestamp(last_activity)
-        
-#         time_elapsed = current_time - last_activity
-        
-#         if time_elapsed > timedelta(minutes=timeout_minutes):
-#             st.warning("⏰ Session expired due to inactivity. Please log in again.")
-#             handle_logout()
-#         else:
-#             # Update last activity time on any interaction
-#             st.session_state.last_activity = str(current_time)
-            
 def show_login_screen():
     """Display the login screen"""
     # Safelink logo
