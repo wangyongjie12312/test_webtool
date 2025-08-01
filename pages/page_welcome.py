@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 #%% set up the page configuration
 st.set_page_config(
@@ -47,7 +48,7 @@ def handle_logout():
     st.rerun()
 
 # Main page content
-image = Image.open(r"figures\Safelink Logo Medium.png")
+image = Image.open( os.path.join('figures', 'Safelink Logo Medium.png'))
 col1, col2, col3 = st.columns([1, 1, 1])
 with col2:
     st.image(image, width=1000)
@@ -120,7 +121,7 @@ if st.session_state.logged_in:
         st.markdown("Technical support of OrcaFlex simulation: autodept@safelink.no.")
     st.divider()
         
-    image = Image.open(r"figures\Cover-final0.jpg")
+    image = Image.open(os.path.join('figures', 'Cover-final0.jpg'))
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.session_state.image_welcome:
@@ -140,7 +141,7 @@ if st.session_state.logged_in:
         col11, col21, col31 = st.columns([1, 1, 1])
         with col21:
             st.markdown("<br>"*1, unsafe_allow_html=True)
-            image = Image.open(r"figures/IAHC 700 undocked 003.png")
+            image = Image.open(os.path.join('figures', 'IAHC 700 undocked 003.png'))
             st.image(image, width=200)
             
     with col2:
@@ -153,7 +154,7 @@ if st.session_state.logged_in:
         col1, col2, col3 = st.columns([1, 6, 1])
         with col2:
             st.markdown("<br>"*1, unsafe_allow_html=True)
-            image = Image.open(r"figures/10.png")
+            image = Image.open(os.path.join('figures', '10.png'))
             st.image(image, width=400)
     
     # Simulation service
@@ -167,19 +168,19 @@ if st.session_state.logged_in:
     with col2:
         # decorative image
         st.markdown("<br>"*6, unsafe_allow_html=True)
-        image = Image.open(r"figures\shutterstock_162848774.jpg")
+        image = Image.open( os.path.join('figures', 'shutterstock_162848774.jpg'))
         st.image(image, width=270)
 
     # OrcaFlex simulation image
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
-        image = Image.open(r"figures/orcaflex_simulation.png")
+        image = Image.open(os.path.join('figures', 'orcaflex_simulation.png'))
         st.image(image, width=1000)
         
     
     #%% Safelink certificates
     st.divider()
-    image_certificate = Image.open(r"figures/shutterstock_1904707174.jpg")
+    image_certificate = Image.open( os.path.join('figures', 'shutterstock_162848774.jpg'))
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         st.markdown("<br><br>", unsafe_allow_html=True)

@@ -56,9 +56,9 @@ if not safelink_units.empty:
 
 # Define default images for each category
 default_images = {
-    "IAHC": r"figures\Blade rack (3).jpg",
-    "PHC": r"figures\DSC00623.JPG", 
-    "Shock absorber": r"figures\PXL_20250511_123654514.jpg"
+    "IAHC": os.path.join('figures', 'Blade rack (3).jpg'),
+    "PHC":  os.path.join('figures', 'DSC00623.jpg'),
+    "Shock absorber": os.path.join('figures', 'PXL_20250511_123654514.jpg'),
 }
 
 def get_unit_image(unit_serial, unit_type):
@@ -74,14 +74,14 @@ def get_unit_image(unit_serial, unit_type):
         actual_serial = unit_serial
     
     # Try unit-specific image first
-    unit_specific_image = f"figures\\{actual_serial}.jpg"
+    unit_specific_image = os.path.join('figures', f"{actual_serial}.jpg" )
     
     # Check if unit-specific image exists
     if os.path.exists(unit_specific_image):
         return unit_specific_image
     else:
         # Always fall back to default category image if unit-specific doesn't exist
-        return default_images.get(unit_type, r"figures\Blade rack (3).jpg")
+        return default_images.get(unit_type, os.path.join('figures', 'Blade rack (3).jpg'))
 
 # Find current selection index based on session state
 def get_selection_index(units_list, session_unit):
@@ -301,7 +301,7 @@ with col3:
             st.image(image, use_container_width=True)
             
         except Exception as e:
-            fallback_path = default_images.get(display_unit_type, r"figures\Blade rack (3).jpg")
+            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'Blade rack (3).jpg'))
             try:
                 fallback_image = Image.open(fallback_path)
                 st.image(fallback_image, use_container_width=True)
@@ -319,7 +319,7 @@ with col_1:
     st.write("See [help documentation](http://safelink.no) for detailed explanation of parameters and settings.")
 with col_2:
     try:
-        image_certificate = Image.open(r"figures\Safelink_Tablet_red.jpg")
+        image_certificate = Image.open(os.path.join('figures', 'Safelink_Tablet_red.jpg'))
         _, col2,_ = st.columns([2,3,2])
         with col2:
             st.markdown("<br>"*1, unsafe_allow_html=True)

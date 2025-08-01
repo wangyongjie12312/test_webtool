@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 # Page configuration
 st.set_page_config(
@@ -88,7 +89,7 @@ tab1, tab2 = st.tabs(["🖥️ Web UI Configuration Tool", "🔧 External Functi
 with tab1:
     st.header("🖥️ How to Use the Web UI Configuration Tool")
     
-    image_certificate = Image.open(r"./figures/WebUI_flowchart_short.png")
+    image_certificate = Image.open(os.path.join('figures', 'WebUI_flowchart_short.png'))
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         st.markdown("<br>", unsafe_allow_html=True)

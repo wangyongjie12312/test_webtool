@@ -1,10 +1,7 @@
 import streamlit as st
-from PIL import Image
-import json     
 import configparser
 import io
 import pandas as pd
-
 
 # page content
 st.markdown("# Configuration Summary & Export")

@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 # page 2 content
 st.markdown("# Selection of Customized Results")
@@ -44,7 +45,7 @@ with col1:
     selection_box_results = st.selectbox("OrcaFlex defaults", options=["OrcaFlex defaults", "Customized"], key="results_selectbox", index=results_index)
 
 with col2:
-    image = Image.open(r"figures\SafelinkTabWifi.png")
+    image = Image.open(os.path.join('figures', 'SafelinkTabWiFi.png'))
     col1, col2 = st.columns([1, 1])
     with col2:
         st.image(image, width=300)    
@@ -53,7 +54,7 @@ if selection_box_results == "OrcaFlex defaults":
     st.session_state.customized_results = False
     st.markdown("The results will be generated based on the OrcaFlex predefined results.")
     st.divider()
-    image = Image.open(r"figures\Lazy_Wave_Riser.png")
+    image = Image.open(os.path.join('figures', 'Lazy_Wave_Riser.png'))
     col01, col02, col03 = st.columns([1, 6, 1])
     with col02:
         st.image(image, width=1000)    
@@ -193,7 +194,8 @@ elif selection_box_results == "Customized":
                         option, 
                         value=is_currently_selected, 
                         key=checkbox_key,
-                        on_change=update_body_results
+                        on_change=update_body_results,
+                        height=500
                     )
             
         with col_c2:
@@ -216,7 +218,8 @@ elif selection_box_results == "Customized":
                         option, 
                         value=is_currently_selected, 
                         key=checkbox_key,
-                        on_change=update_rod_results
+                        on_change=update_rod_results,
+                        height=500
                     )
             
         with col_c3:
@@ -239,7 +242,8 @@ elif selection_box_results == "Customized":
                         option, 
                         value=is_currently_selected, 
                         key=checkbox_key,
-                        on_change=update_payload_results
+                        on_change=update_payload_results,
+                        height=500
                     )
 
         

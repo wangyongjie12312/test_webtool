@@ -1,0 +1,39 @@
+[server]
+enableStaticServing = true
+
+
+[theme]
+base="dark" # the main font color theme
+borderColor="#593c8f42"
+showWidgetBorder=true
+primaryColor="#593C8F"
+backgroundColor = "black"
+# backgroundColor="#f7f3f3"
+secondaryBackgroundColor="#593c8f42"
+# tertiaryBackgroundColor = "#FFCD00"
+baseRadius="none"
+# dataframeHeaderBackgroundColor = "#593C8F"
+dataframeBorderColor = "#593c8f42"
+codeBackgroundColor = "#593C8F"
+textColor = "#E3F0F3"
+# linkUnderline = false
+
+# font = "monsterat"
+baseFontSize = 18
+# baseFontWeight = 300
+
+
+[theme.sidebar]
+# showSidebarBorder = true
+showWidgetBorder=true
+backgroundColor="#00002a"
+secondaryBackgroundColor="#FFCD00"
+baseRadius="none"
+
+[client]
+toolbarMode = "developer"
+showErrorDetails = "full"
+
+
+# CSS Colors: https://www.w3schools.com/cssref/css_colors.php
+
