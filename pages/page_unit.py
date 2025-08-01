@@ -223,7 +223,8 @@ with col1:
                                 options=config["units"], 
                                 format_func=format_unit_display,
                                 key=config["key"], 
-                                index=current_index)
+                                index=current_index,
+                                )
     
     # Update session state only if selection changed
     if selected_unit_serial != st.session_state['selected_unit']:
@@ -299,7 +300,7 @@ with col3:
             st.image(image, use_container_width=True)
             
         except Exception as e:
-            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'Blade rack (3).jpg'))
+            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'phc.jpg'))
             try:
                 fallback_image = Image.open(fallback_path)
                 st.image(fallback_image, use_container_width=True)
