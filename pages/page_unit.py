@@ -79,7 +79,7 @@ def get_unit_image(unit_serial, unit_type):
         return unit_specific_image
     else:
         # Always fall back to default category image if unit-specific doesn't exist
-        return default_images.get(unit_type, os.path.join('figures', 'Blade rack (3).jpg'))
+        return default_images.get(unit_type, os.path.join('figures', 'Bladerack.jpg'))
 
 # Find current selection index based on session state
 def get_selection_index(units_list, session_unit):
@@ -300,7 +300,7 @@ with col3:
             st.image(image, use_container_width=True)
             
         except Exception as e:
-            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'phc.jpg'))
+            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'Bladerack.jpg'))
             try:
                 fallback_image = Image.open(fallback_path)
                 st.image(fallback_image, use_container_width=True)
