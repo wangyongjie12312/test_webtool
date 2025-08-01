@@ -179,11 +179,8 @@ category_index = ["IAHC", "PHC", "Shock absorber"].index(current_type)
 
 # Unit formatter function
 def format_unit_display(unit):
-    if isinstance(unit, tuple) and len(unit) == 2:
-        unit_type, unit_id = unit
-        return f"{unit_type:<30} │ {unit_id}"
-    else:
-        return str(unit)
+    unit_type, unit_id = unit
+    return f"{unit_type:<30} | {unit_id}"
 
 def get_unit_specifications(unit_data):
     """Get specifications for the selected unit from Excel data"""
