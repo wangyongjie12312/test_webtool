@@ -1,8 +1,6 @@
 import streamlit as st
-from datetime import datetime, timedelta
-import pandas as pd
-import numpy as np
 from PIL import Image
+import os 
 
 #%% set up the page configuration
 st.set_page_config(
@@ -59,7 +57,7 @@ def show_login_screen():
     """Display the login screen"""
     # Safelink logo
     try:
-        image = Image.open(r"figures\Safelink Logo Medium.png")
+        image = Image.open(os.path.join('figures', 'SafelinkTabWiFi.png'))
         _, col2,_ = st.columns([1, 1, 1])
         with col2:
             st.image(image, width=800)

@@ -85,31 +85,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "validate_unit_selection",
         "kind": 2,
         "importPath": "pages.page_export",
@@ -564,7 +539,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def show_login_screen():\n    \"\"\"Display the login screen\"\"\"\n    # Safelink logo\n    try:\n        image = Image.open(r\"figures\\Safelink Logo Medium.png\")\n        _, col2,_ = st.columns([1, 1, 1])\n        with col2:\n            st.image(image, width=800)\n    except:\n        st.title(\"🔧 Safelink OrcaFlex Configuration Tool\")",
+        "peekOfCode": "def show_login_screen():\n    \"\"\"Display the login screen\"\"\"\n    # Safelink logo\n    try:\n        image = Image.open(os.path.join('figures', 'SafelinkTabWiFi.png'))\n        _, col2,_ = st.columns([1, 1, 1])\n        with col2:\n            st.image(image, width=800)\n    except:\n        st.title(\"🔧 Safelink OrcaFlex Configuration Tool\")",
         "detail": "main",
         "documentation": {}
     },
