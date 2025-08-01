@@ -30,28 +30,27 @@ def load_unit_data():
 # Load the data
 
 safelink_units = load_unit_data()
-if not safelink_units.empty:
-    # Categorize units based on actual data
-    iahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]
-    poseidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]
-    other_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]
+# Categorize units based on actual data
+iahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]
+poseidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]
+other_units = safelink_units[~safelink_units['Unit Type'].str.contains('IAHC|Poseidon', case=False, na=False)]
 
-    # Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT "None" options
-    IAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]
-    PHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]
-    shock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]
-    
-    # Create a lookup dictionary for unit specifications
-    unit_specs_lookup = {}
-    for _, row in safelink_units.iterrows():
-        unit_specs_lookup[row['Unit ID']] = {
-            'stroke': f"{row['stroke [m]']} m",
-            'overall_size': row['overall size [L/W/H, m]'],
-            'design_pressure': f"{row['design pressure [bar]']} bar",
-            'design_water_depth': f"{row['design water depth [m]']} m",
-            'gas_volume': f"{row['gas volume [m3 @ atm]']} m³",
-            'weight': f"{row['weight [kg]']/1000:.1f} tonnes",  # Convert kg to tonnes
-            'SWL': f"{row['SWL [Te]']:.1f} Te", 
+# Create unit lists with tuples (Unit Type, Unit ID) - WITHOUT "None" options
+IAHC_units = [unit for unit in zip(iahc_units['Unit Type'].tolist(), iahc_units['Unit ID'].tolist())]
+PHC_units = [unit for unit in zip(poseidon_units['Unit Type'].tolist(), poseidon_units['Unit ID'].tolist())]
+shock_absorber_units = [unit for unit in zip(other_units['Unit Type'].tolist(), other_units['Unit ID'].tolist())]
+
+# Create a lookup dictionary for unit specifications
+unit_specs_lookup = {}
+for _, row in safelink_units.iterrows():
+    unit_specs_lookup[row['Unit ID']] = {
+        'stroke': f"{row['stroke [m]']} m",
+        'overall_size': row['overall size [L/W/H, m]'],
+        'design_pressure': f"{row['design pressure [bar]']} bar",
+        'design_water_depth': f"{row['design water depth [m]']} m",
+        'gas_volume': f"{row['gas volume [m3 @ atm]']} m³",
+        'weight': f"{row['weight [kg]']/1000:.1f} tonnes",  # Convert kg to tonnes
+        'SWL': f"{row['SWL [Te]']:.1f} Te", 
         }
 
 # Define default images for each category
