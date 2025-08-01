@@ -1,5 +1,6 @@
 streamlit
 pandas
+openpyxl
 pillow
 
 # Add any other libraries your app uses
