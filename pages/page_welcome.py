@@ -180,7 +180,7 @@ if st.session_state.logged_in:
     
     #%% Safelink certificates
     st.divider()
-    image_certificate = Image.open( os.path.join('figures', 'shutterstock_162848774.jpg'))
+    image_certificate = Image.open( os.path.join('figures', 'shutterstock_1904707174.jpg'))
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         st.markdown("<br><br>", unsafe_allow_html=True)
