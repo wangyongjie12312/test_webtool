@@ -101,7 +101,7 @@ def display_unit_parameters():
             unit_params.append([param_name, f"{param_value}"])
         
         unit_params_df = pd.DataFrame(unit_params, columns=["Parameter", "Value"])
-        st.dataframe(unit_params_df, use_container_width=True, hide_index=True, height=400)
+        st.dataframe(unit_params_df, use_container_width=True, hide_index=True, height=450)
 
 def display_payload_parameters():
     """Display payload parameters in expandable table"""
@@ -114,7 +114,7 @@ def display_payload_parameters():
             payload_params.append([param_name, f"{param_value}"])
         
         payload_params_df = pd.DataFrame(payload_params, columns=["Parameter", "Value"])
-        st.dataframe(payload_params_df, use_container_width=True, hide_index=True, height=400)
+        st.dataframe(payload_params_df, use_container_width=True, hide_index=True, height=450)
 
 def display_special_functions():
     """Display special functions configuration"""
@@ -187,7 +187,7 @@ def display_special_functions():
             
             if special_function_params:
                 special_df = pd.DataFrame(special_function_params, columns=["Parameter", "Value"])
-                st.dataframe(special_df, use_container_width=True, hide_index=True, height=400)
+                st.dataframe(special_df, use_container_width=True, hide_index=True, height=450)
             else:
                 st.info("No special functions configured")
         else:
@@ -225,7 +225,7 @@ def display_selected_results():
             
             if all_results:
                 results_df = pd.DataFrame(all_results, columns=["Result", "Type"])
-                st.dataframe(results_df, use_container_width=True, hide_index=True, height=400)
+                st.dataframe(results_df, use_container_width=True, hide_index=True, height=450)
             else:
                 st.info("No custom results selected")
         else:

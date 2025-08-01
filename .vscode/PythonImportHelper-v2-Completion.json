@@ -142,7 +142,7 @@
         "kind": 2,
         "importPath": "pages.page_export",
         "description": "pages.page_export",
-        "peekOfCode": "def display_unit_parameters():\n    \"\"\"Display unit parameters in expandable table\"\"\"\n    with st.expander(\"**Unit Parameters**\", expanded=False):\n        unit_params = []\n        for i in range(1, 11):\n            param_value = st.session_state[f'saved_number_{i}_0']\n            param_name = get_unit_parameter_name(i)\n            unit_params.append([param_name, f\"{param_value}\"])\n        unit_params_df = pd.DataFrame(unit_params, columns=[\"Parameter\", \"Value\"])\n        st.dataframe(unit_params_df, use_container_width=True, hide_index=True, height=400)",
+        "peekOfCode": "def display_unit_parameters():\n    \"\"\"Display unit parameters in expandable table\"\"\"\n    with st.expander(\"**Unit Parameters**\", expanded=False):\n        unit_params = []\n        for i in range(1, 11):\n            param_value = st.session_state[f'saved_number_{i}_0']\n            param_name = get_unit_parameter_name(i)\n            unit_params.append([param_name, f\"{param_value}\"])\n        unit_params_df = pd.DataFrame(unit_params, columns=[\"Parameter\", \"Value\"])\n        st.dataframe(unit_params_df, use_container_width=True, hide_index=True, height=450)",
         "detail": "pages.page_export",
         "documentation": {}
     },
@@ -151,7 +151,7 @@
         "kind": 2,
         "importPath": "pages.page_export",
         "description": "pages.page_export",
-        "peekOfCode": "def display_payload_parameters():\n    \"\"\"Display payload parameters in expandable table\"\"\"\n    with st.expander(\"**Payload Parameters**\", expanded=False):\n        payload_params = []\n        for i in range(1, 11):\n            param_value = st.session_state[f'saved_number_{i}_1']\n            param_name = get_payload_parameter_name(i)\n            payload_params.append([param_name, f\"{param_value}\"])\n        payload_params_df = pd.DataFrame(payload_params, columns=[\"Parameter\", \"Value\"])\n        st.dataframe(payload_params_df, use_container_width=True, hide_index=True, height=400)",
+        "peekOfCode": "def display_payload_parameters():\n    \"\"\"Display payload parameters in expandable table\"\"\"\n    with st.expander(\"**Payload Parameters**\", expanded=False):\n        payload_params = []\n        for i in range(1, 11):\n            param_value = st.session_state[f'saved_number_{i}_1']\n            param_name = get_payload_parameter_name(i)\n            payload_params.append([param_name, f\"{param_value}\"])\n        payload_params_df = pd.DataFrame(payload_params, columns=[\"Parameter\", \"Value\"])\n        st.dataframe(payload_params_df, use_container_width=True, hide_index=True, height=450)",
         "detail": "pages.page_export",
         "documentation": {}
     },
