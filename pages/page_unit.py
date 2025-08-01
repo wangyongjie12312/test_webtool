@@ -54,8 +54,8 @@ for _, row in safelink_units.iterrows():
 
 # Define default images for each category
 default_images = {
-    "IAHC": os.path.join('figures', 'Blade rack (3).jpg'),
-    "PHC":  os.path.join('figures', 'DSC00623.jpg'),
+    "IAHC": os.path.join('figures', 'Bladerack.jpg'),
+    "PHC":  os.path.join('figures', 'phc.jpg'),
     "Shock absorber": os.path.join('figures', 'PXL_20250511_123654514.jpg'),
 }
 
