@@ -276,7 +276,7 @@ elif selection_box_results == "Customized":
                             st.write(f"• {result}")
 
         st.markdown("<br>"*1, unsafe_allow_html=True)
-        _, _, col_action3, col_action4 = st.columns([2, 3, 1, 1])
+        _, col_action3, col_action4 = st.columns([4, 1, 1])
         
         with col_action3:
             if st.button("📋 Select Default Results", use_container_width=True, type='secondary', help="Predefined parameters"):
