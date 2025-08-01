@@ -4,7 +4,6 @@ import pandas as pd
 import os
 
 
-
 def auto_save_param(param_name):
     """Auto-save parameter when it changes"""
     if param_name in st.session_state:
@@ -30,7 +29,6 @@ def load_unit_data():
 # Load the data
 
 safelink_units = load_unit_data()
-safelink_units
 # Categorize units based on actual data
 iahc_units = safelink_units[safelink_units['Unit Type'].str.contains('IAHC', case=False, na=False)]
 poseidon_units = safelink_units[safelink_units['Unit Type'].str.contains('Poseidon', case=False, na=False)]
