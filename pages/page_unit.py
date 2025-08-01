@@ -54,7 +54,7 @@ for _, row in safelink_units.iterrows():
 
 # Define default images for each category
 default_images = {
-    "IAHC": os.path.join('figures', 'Bladerack.jpg'),
+    "IAHC": os.path.join('figures', 'ahc.jpg'),
     "PHC":  os.path.join('figures', 'phc.jpg'),
     "Shock absorber": os.path.join('figures', 'shock_absorber.jpg'),
 }
@@ -65,29 +65,21 @@ def get_unit_image(unit_serial, unit_type):
     First tries to load unit-specific image, falls back to default category image.
     """
     
-    # Try to get unit serial from tuple (unit_type, unit_id)
-    if isinstance(unit_serial, tuple) and len(unit_serial) >= 2:
-        actual_serial = unit_serial[1]  # Get the Unit ID from the tuple
-    else:
-        actual_serial = unit_serial
-    
     # Try unit-specific image first
-    unit_specific_image = os.path.join('figures', f"{actual_serial}.jpg" )
+    unit_specific_image = os.path.join('figures', f"{unit_serial}.jpg" )
     
     # Check if unit-specific image exists
     if os.path.exists(unit_specific_image):
         return unit_specific_image
     else:
         # Always fall back to default category image if unit-specific doesn't exist
-        return default_images.get(unit_type, os.path.join('figures', 'Bladerack.jpg'))
+        return default_images.get(unit_type, os.path.join('figures', 'ahc.jpg'))
 
 # Find current selection index based on session state
 def get_selection_index(units_list, session_unit):
-    if session_unit and isinstance(session_unit, tuple):
-        for i, unit in enumerate(units_list):
-            if isinstance(unit, tuple) and unit[1] == session_unit[1]:  # Compare Unit IDs
-                return i
-    return 0  # Default to first item instead of "None"
+    for i, unit in enumerate(units_list):
+        if isinstance(unit, tuple) and unit[1] == session_unit[1]:  # Compare Unit IDs
+            return i
 
 # Determine which category the currently selected unit belongs to
 def get_unit_type(session_unit):
@@ -300,13 +292,12 @@ with col3:
             st.image(image, use_container_width=True)
             
         except Exception as e:
-            fallback_path = default_images.get(display_unit_type, os.path.join('figures', 'Bladerack.jpg'))
+            fallback_path = os.path.join('figures', 'ahc.jpg')
             try:
                 fallback_image = Image.open(fallback_path)
                 st.image(fallback_image, use_container_width=True)
             except:
                 st.warning("Image not found")
-
 
 
 #%% System Parameters and User Inputs

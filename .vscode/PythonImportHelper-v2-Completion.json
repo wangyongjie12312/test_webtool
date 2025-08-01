@@ -286,7 +286,7 @@
         "kind": 2,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "def get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"\n    # Try to get unit serial from tuple (unit_type, unit_id)\n    if isinstance(unit_serial, tuple) and len(unit_serial) >= 2:\n        actual_serial = unit_serial[1]  # Get the Unit ID from the tuple\n    else:\n        actual_serial = unit_serial",
+        "peekOfCode": "def get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"\n    # Try unit-specific image first\n    unit_specific_image = os.path.join('figures', f\"{unit_serial}.jpg\" )\n    # Check if unit-specific image exists\n    if os.path.exists(unit_specific_image):\n        return unit_specific_image",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -295,7 +295,7 @@
         "kind": 2,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "def get_selection_index(units_list, session_unit):\n    if session_unit and isinstance(session_unit, tuple):\n        for i, unit in enumerate(units_list):\n            if isinstance(unit, tuple) and unit[1] == session_unit[1]:  # Compare Unit IDs\n                return i\n    return 0  # Default to first item instead of \"None\"\n# Determine which category the currently selected unit belongs to\ndef get_unit_type(session_unit):\n    if session_unit and isinstance(session_unit, tuple):\n        if any(\"IAHC\" in unit[0] for unit in IAHC_units if isinstance(unit, tuple) and unit[1] == session_unit[1]):",
+        "peekOfCode": "def get_selection_index(units_list, session_unit):\n    for i, unit in enumerate(units_list):\n        if isinstance(unit, tuple) and unit[1] == session_unit[1]:  # Compare Unit IDs\n            return i\n# Determine which category the currently selected unit belongs to\ndef get_unit_type(session_unit):\n    if session_unit and isinstance(session_unit, tuple):\n        if any(\"IAHC\" in unit[0] for unit in IAHC_units if isinstance(unit, tuple) and unit[1] == session_unit[1]):\n            return \"IAHC\"\n        elif any(\"Poseidon\" in unit[0] for unit in PHC_units if isinstance(unit, tuple) and unit[1] == session_unit[1]):",
         "detail": "pages.page_unit",
         "documentation": {}
     },
@@ -493,7 +493,7 @@
         "kind": 5,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "default_images = {\n    \"IAHC\": os.path.join('figures', 'Bladerack.jpg'),\n    \"PHC\":  os.path.join('figures', 'phc.jpg'),\n    \"Shock absorber\": os.path.join('figures', 'shock_absorber.jpg'),\n}\ndef get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"",
+        "peekOfCode": "default_images = {\n    \"IAHC\": os.path.join('figures', 'ahc.jpg'),\n    \"PHC\":  os.path.join('figures', 'phc.jpg'),\n    \"Shock absorber\": os.path.join('figures', 'shock_absorber.jpg'),\n}\ndef get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"",
         "detail": "pages.page_unit",
         "documentation": {}
     },
