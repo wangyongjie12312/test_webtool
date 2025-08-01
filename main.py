@@ -57,7 +57,7 @@ def show_login_screen():
     """Display the login screen"""
     # Safelink logo
     try:
-        image = Image.open(os.path.join('figures', 'SafelinkTabWiFi.png'))
+        image = Image.open(os.path.join('figures', 'Safelink Logo Medium.png'))
         _, col2,_ = st.columns([1, 1, 1])
         with col2:
             st.image(image, width=800)
