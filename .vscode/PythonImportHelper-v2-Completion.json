@@ -493,7 +493,7 @@
         "kind": 5,
         "importPath": "pages.page_unit",
         "description": "pages.page_unit",
-        "peekOfCode": "default_images = {\n    \"IAHC\": os.path.join('figures', 'Bladerack.jpg'),\n    \"PHC\":  os.path.join('figures', 'phc.jpg'),\n    \"Shock absorber\": os.path.join('figures', 'PXL_20250511_123654514.jpg'),\n}\ndef get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"",
+        "peekOfCode": "default_images = {\n    \"IAHC\": os.path.join('figures', 'Bladerack.jpg'),\n    \"PHC\":  os.path.join('figures', 'phc.jpg'),\n    \"Shock absorber\": os.path.join('figures', 'shock_absorber.jpg'),\n}\ndef get_unit_image(unit_serial, unit_type):\n    \"\"\"\n    Get the appropriate image for the selected unit.\n    First tries to load unit-specific image, falls back to default category image.\n    \"\"\"",
         "detail": "pages.page_unit",
         "documentation": {}
     },

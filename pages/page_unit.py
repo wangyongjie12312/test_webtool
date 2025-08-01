@@ -56,7 +56,7 @@ for _, row in safelink_units.iterrows():
 default_images = {
     "IAHC": os.path.join('figures', 'Bladerack.jpg'),
     "PHC":  os.path.join('figures', 'phc.jpg'),
-    "Shock absorber": os.path.join('figures', 'PXL_20250511_123654514.jpg'),
+    "Shock absorber": os.path.join('figures', 'shock_absorber.jpg'),
 }
 
 def get_unit_image(unit_serial, unit_type):
